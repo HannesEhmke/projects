@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://djbstt1ttt74u" path="res://scenes/spieler.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://hno1iofis03l" path="res://assets/sprites/world_tileset.png" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://nna12c48uxbo" path="res://scenes/movingplatform.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://cw0sw4r0dnkp" path="res://scenes/münze.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://cvwd5idvcbc86" path="res://scenes/killzone.tscn" id="5_iywne"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("1_yqjtg")
@@ -181,20 +183,162 @@ texture = ExtResource("1_yqjtg")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 
+[sub_resource type="Animation" id="Animation_lnu2h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1740, 1082)]
+}
+
+[sub_resource type="Animation" id="Animation_lbhrr"]
+resource_name = "move"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1740, 1082), Vector2(1862, 1082)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iywne"]
+_data = {
+&"RESET": SubResource("Animation_lnu2h"),
+&"move": SubResource("Animation_lbhrr")
+}
+
+[sub_resource type="Animation" id="Animation_iywne"]
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2093, 826), Vector2(2100, 706)]
+}
+
+[sub_resource type="Animation" id="Animation_p57ef"]
+resource_name = "moveupdown"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1964, 1151), Vector2(1964, 999)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5sy4"]
+_data = {
+&"RESET": SubResource("Animation_iywne"),
+&"moveupdown": SubResource("Animation_p57ef")
+}
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tdl64"]
+distance = -109.0
+
 [node name="Game" type="Node2D" unique_id=1982889683]
+position = Vector2(-1372, -1121)
 
 [node name="TileMap2" type="TileMap" parent="." unique_id=1714641924]
 tile_set = SubResource("TileSet_tdl64")
 format = 2
-layer_0/tile_data = PackedInt32Array(4128846, 0, 0, 4128847, 0, 0, 4128848, 0, 0, 4128849, 0, 0, 4128850, 0, 0, 4063316, 0, 0, 3997782, 0, 0, 3997783, 0, 0, 4194393, 0, 0, 4194394, 0, 0, 4194395, 0, 0, 4128861, 0, 0, 4063327, 0, 0, 3997793, 0, 0, 4128858, 196608, 8, 4063322, 196608, 6, 3997786, 196608, 5, 3997785, 131072, 5, 3997787, 262144, 5, 3932250, 196608, 4, 4128866, 393216, 0, 4128867, 393216, 0, 4128869, 393216, 0, 4194402, 393216, 1, 4194403, 393216, 1, 4128870, 589824, 0, 4128871, 655360, 0, 4128872, 720896, 0, 4128873, 262144, 0, 4128874, 262144, 0, 4194409, 262144, 1, 4194410, 327680, 1, 4063337, 65536, 8, 3932257, 393216, 7, 4063331, 0, 8, 4194404, 393216, 1, 4194405, 393216, 1, 4128868, 393216, 0, 4128881, 262144, 0, 4128882, 262144, 0, 4128883, 262144, 0)
+layer_0/tile_data = PackedInt32Array(4128846, 0, 0, 4128847, 0, 0, 4128848, 0, 0, 4128849, 0, 0, 4128850, 0, 0, 4063316, 0, 0, 3997782, 0, 0, 3997783, 0, 0, 4194393, 0, 0, 4194394, 0, 0, 4194395, 0, 0, 4128861, 0, 0, 4063327, 0, 0, 3997793, 0, 0, 4128858, 196608, 8, 4063322, 196608, 6, 3997786, 196608, 5, 3997785, 131072, 5, 3997787, 262144, 5, 3932250, 196608, 4, 4128869, 393216, 0, 4194402, 393216, 1, 4194403, 393216, 1, 4128870, 589824, 0, 4128871, 655360, 0, 4128872, 720896, 0, 4128873, 262144, 0, 4128874, 262144, 0, 4194409, 262144, 1, 4194410, 327680, 1, 4063337, 65536, 8, 3932257, 393216, 7, 4063331, 0, 8, 4194404, 393216, 1, 4194405, 393216, 1, 4128868, 393216, 0, 3735677, 0, 0, 3735678, 0, 0, 3735679, 0, 0, 3801213, 0, 1, 3801214, 0, 1, 3801215, 65536, 1, 4259941, 524288, 1, 4259940, 524288, 1, 4259938, 524288, 1, 4259929, 0, 1, 4259930, 0, 1, 4259931, 0, 1, 4194382, 0, 1, 4194383, 0, 1, 4194384, 65536, 1, 4194385, 0, 1, 4194386, 0, 1, 4128866, 393216, 0, 4128867, 393216, 0, 4259960, 262144, 1, 4194423, 262144, 1, 4128887, 262144, 0, 4128886, 262144, 0, 4194422, 262144, 1, 4194424, 262144, 1, 4128888, 262144, 0, 4063348, 524288, 2, 3997812, 524288, 2, 2490502, 0, 0, 2490503, 0, 0, 2490504, 0, 0, 2490505, 0, 0, 2424968, 196608, 8, 2359432, 196608, 7, 2293896, 196608, 6, 2228360, 196608, 5, 2228359, 131072, 5, 2228361, 262144, 5, 2162824, 196608, 4, 2162823, 131072, 4)
 
 [node name="Spieler" parent="." unique_id=1119518059 instance=ExtResource("1_uwrxv")]
-position = Vector2(1286, 1003)
+position = Vector2(1286, 999)
 
 [node name="Camera2D" type="Camera2D" parent="Spieler" unique_id=189285752]
-position = Vector2(-3, -6)
+position = Vector2(-3, -7)
 zoom = Vector2(4, 4)
+limit_bottom = 300
+limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="platform" parent="." unique_id=1432499891 instance=ExtResource("3_lnu2h")]
 position = Vector2(1293, 1042)
+
+[node name="platform4" parent="." unique_id=203156319 instance=ExtResource("3_lnu2h")]
+position = Vector2(2060, 944)
+
+[node name="platform5" parent="." unique_id=1381763162 instance=ExtResource("3_lnu2h")]
+position = Vector2(2091, 902)
+
+[node name="platform6" parent="." unique_id=413007933 instance=ExtResource("3_lnu2h")]
+position = Vector2(2066, 863)
+
+[node name="platform2" parent="." unique_id=713765810 instance=ExtResource("3_lnu2h")]
+position = Vector2(1740, 1082)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform2" unique_id=1437142394]
+libraries/ = SubResource("AnimationLibrary_iywne")
+autoplay = &"move"
+
+[node name="platform3" parent="." unique_id=1824669422 instance=ExtResource("3_lnu2h")]
+position = Vector2(2093, 826)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform3" unique_id=464213532]
+libraries/ = SubResource("AnimationLibrary_u5sy4")
+autoplay = &"moveupdown"
+
+[node name="platform7" parent="." unique_id=342057746 instance=ExtResource("3_lnu2h")]
+position = Vector2(2093, 826)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform7" unique_id=741454886]
+libraries/ = SubResource("AnimationLibrary_u5sy4")
+autoplay = &"RESET"
+
+[node name="Killzone" parent="." unique_id=1361707785 instance=ExtResource("5_iywne")]
+position = Vector2(1186, 1003)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=304352020]
+position = Vector2(90, 86)
+shape = SubResource("WorldBoundaryShape2D_tdl64")
+
+[node name="Münzen" type="Node" parent="." unique_id=344629143]
+
+[node name="Münze" parent="Münzen" unique_id=1413241927 instance=ExtResource("4_lbhrr")]
+position = Vector2(-78, -160)
+
+[node name="Münze2" parent="Münzen" unique_id=1978616076 instance=ExtResource("4_lbhrr")]
+position = Vector2(155, -137)
+
+[node name="Münze3" parent="Münzen" unique_id=215328803 instance=ExtResource("4_lbhrr")]
+position = Vector2(590, -57)
+
+[node name="Münze4" parent="Münzen" unique_id=919729687 instance=ExtResource("4_lbhrr")]
+position = Vector2(492, -151)
+
+[node name="Münze5" parent="Münzen" unique_id=1744797986 instance=ExtResource("4_lbhrr")]
+position = Vector2(712, -381)
+
+[node name="Münze6" parent="Münzen" unique_id=1411690851 instance=ExtResource("4_lbhrr")]
+position = Vector2(828, -522)
+
+[node name="Node" type="Node" parent="." unique_id=934671914]
