@@ -5,3 +5,5 @@ Flexibler Datei-Import: Liest Klausurergebnisse direkt aus .txt-Dateien ein und 
 Statistische Auswertung: Berechnet den Gesamtdurchschnitt sowie den Schnitt der bestandenen Klausuren.
 Visualisierung: Erzeugt ein Notenspiegel-Balkendiagramm direkt in der Konsole.
 Effiziente Verarbeitung: Schnell-Zuordnung der Notenstufen ($1.0$ bis $5.0$) via Hash-Mapping / Matcher.
+Programmiert zur Automatisierung der Verarbeitung von den Klausurergebnissen im C++ Kurs Programmieren 2 an der TU Braunschweig
+
